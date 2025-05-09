@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/characters.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/style/characters.css">
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
@@ -45,20 +45,23 @@
 		<h3>Total de Indivíduos: <%=CharacterList.getInfo().getCount()%></h3>
 	</nav>
 	<form id="search-form" action="">
-		<i class="bi bi-search" style="font-weight: bolder"></i>
-		<input id="search-input" type="text" placeholder="Busca"/>
+		<input id="search-input" type="text" placeholder="Busca" />
+		<i id="search-btn" class="bi bi-search"></i>
+		<i id="close-btn">&#10005;</i>
 	</form>
-	<div id="search-div">
-		<ul>
-			<li id="search-name"></li>
-			<li id="search-status"></li>
-			<li id="search-species"></li>
-			<li id="search-type"></li>
-			<li id="search-gender"></li>
-			<li id="search-origin"></li>
-			<li id="search-location"></li>
+	<div class="search-div">
+		<ul class="character-found">
+			<li class="character-attribute found-name"></li>
+			<li class="character-attribute found-status"></li>
+			<li class="character-attribute found-species"></li>
+			<li class="character-attribute found-type"></li>
+			<li class="character-attribute found-gender"></li>
+			<li class="character-attribute found-origin"></li>
+			<li class="character-attribute found-location"></li>
+			<li class="character-attribute found-created"></li>
 		</ul>
-		<img id="search-img" src="${pageContext.request.contextPath}/image/no_profile.png" alt="Imagem do elemento encontrado na busca">
+		<img class="found-img" src="${pageContext.request.contextPath}/image/no_profile.png" alt="Imagem do elemento encontrado na busca">
+		<h2 class="next-icon">></h2>
 	</div>
 	<div id="table-div" class="d-flex justify-content-center vh-100">
 		<table id="table" class="table-dark table-striped table-bordered mb-0">
@@ -68,7 +71,7 @@
 				<td>Foto</td>
 			</thead>
 			<%for(Character c: CharacterList.getResults()){%>
-				<tr class="align-middle text-center">
+				<tr class="align-middle text-center character-row">
 					<td class="align-middle text-center"><%= c.getName() %></td>
 					<td class="align-middle text-center "><%if(c.getStatus().equals("Alive")){%>
 							<%= "Vivo" %>
@@ -85,36 +88,7 @@
 			<% } %>
 		</table>
 	</div>
-	<script>
-		document.addEventListener("DOMContentLoaded", () => {
-			const nav = document.getElementById("nav");
-			const input = document.getElementById("search-input");
-			const searchForm = document.getElementById("search-form")
-			const tableDiv = document.getElementById("table-div");
-			const table = document.getElementById("table");
-			const searchDiv = document.getElementById("search-div");
-			const body = document.getElementById("body")
-
-			if (input) {
-				input.addEventListener("focus", () => {
-					nav.classList.add("remove-nav");
-					searchForm.classList.add("search-form-to-top")
-					table.classList.add("remove-table")
-					tableDiv.classList.add("remove-table")
-					searchDiv.classList.add("search-div-appearing")
-					body.classList.add("body-on-search")
-				});
-
-				input.addEventListener("blur", () => {
-					nav.classList.remove("remove-nav");
-					searchForm.classList.remove("search-form-to-top")
-					table.classList.remove("remove-table")
-					tableDiv.classList.remove("remove-table")
-					searchDiv.classList.remove("search-div-appearing")
-					body.classList.remove("body-on-search")
-				});
-			}
-		});
-	</script>
+	<script src="${pageContext.request.contextPath}/script/handlingSearchPage.js"></script>
+	<script src="${pageContext.request.contextPath}/script/characterSearch.js"></script>
 </body>
 </html>

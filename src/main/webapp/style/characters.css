@@ -11,6 +11,7 @@
     background-color: #938c8c;
     display: flex;
     justify-content: center;
+
 }
 
 #nav{
@@ -81,11 +82,6 @@ button:hover {
     transform: translatey(-70px);
 }
 
-#search-input:focus {
-    transform: scale(1.2);
-    margin-top: 0;
-}
-
 #table{
     position: absolute;
     width: 70%;
@@ -103,33 +99,57 @@ button:hover {
     display: none;
 }
 
-#search-div {
+.search-div {
     display: none;
     transition: 1.5s linear;
-    overflow: hidden;
+    overflow: scroll;
 }
 
-#search-div.search-div-appearing {
+.search-div.search-div-appearing {
+    position: absolute;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 80vw;
-    height: 75vh;
+    height: 80vh;
     margin: 100px auto;
     background-color: #ffffff;
     border-radius: 50px;
     opacity: 0.9;
 }
 
-#search-img{
+#search-btn, #close-btn {
+    visibility: collapse;
+}
+
+#search-btn.search-btns, #close-btn.search-btns {
+    position: fixed;
+    visibility: visible;
+    cursor: pointer;
+    z-index: 1;
+    padding: 0 10px;
+    font-size: 1.3em;
+    margin-left: 50px;
+}
+
+#close-btn.search-btns {
+    margin-left: 100px;
+}
+
+#search-btn.search-btns:hover, #close-btn.search-btns:hover {
+    color: white;
+}
+
+.found-img{
     height: 400px;
 }
 
-li {
+.character-attribute {
     width: 30vw;
     font-size: 1.5em;
     margin: 20px;
     background-color: #dcd9d9;
+    list-style: none;
 }
 
 thead{
@@ -151,4 +171,15 @@ td{
 #character-picture:focus {
     margin-top: 10px;
     transform: scale(1.2);
+}
+
+.next-icon {
+    height: 40px;
+    color: lightgray;
+}
+
+.show-next {
+    cursor: pointer;
+    color: black;
+    z-index: 3;
 }

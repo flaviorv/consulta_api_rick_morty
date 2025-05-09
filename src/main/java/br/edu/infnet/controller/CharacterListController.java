@@ -12,9 +12,9 @@ import br.edu.infnet.request.CharacterListRequest;
 @Controller
 public class CharacterListController {
 	@GetMapping(value="/")
-	public ModelAndView telaCharacters(@RequestParam("page") Optional<String> pageParam) {
+	public ModelAndView charactersScreen(@RequestParam("page") Optional<String> pageParam) {
 		String page = pageParam.isEmpty()?"1":pageParam.get();
-		CharacterListRequest.consumirApi(page);
+		CharacterListRequest.getApi(page);
 		ModelAndView mv= new ModelAndView("characters");
 		mv.addObject("page", page);
 		mv.addObject("nextPage", Integer.parseInt(page)+1);

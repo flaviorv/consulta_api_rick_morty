@@ -9,8 +9,8 @@ public class Character {
 	private String species;
 	private String type;
 	private String gender;
-	private Object origin;
-	private Object location;
+	private Origin origin;
+	private Localization location;
 	private String image;
 	private ArrayList<String> episode;
 	private String url;
@@ -52,16 +52,16 @@ public class Character {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Object getOrigin() {
+	public Origin getOrigin() {
 		return origin;
 	}
-	public void setOrigin(Object origin) {
+	public void setOrigin(Origin origin) {
 		this.origin = origin;
 	}
-	public Object getLocation() {
+	public Localization getLocation() {
 		return location;
 	}
-	public void setLocation(Object location) {
+	public void setLocation(Localization location) {
 		this.location = location;
 	}
 	public String getImage() {
